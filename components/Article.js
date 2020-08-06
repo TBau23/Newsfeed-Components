@@ -114,3 +114,48 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker(objData) {
+
+  const article = document.createElement('div')
+  const articleTitle = document.createElement('h2')
+  const date = document.createElement('p')
+  const topP = document.createElement('p')
+  const midP = document.createElement('p')
+  const bottomP = document.createElement('p')
+  const expandButton = document.createElement('span')
+
+  article.appendChild(articleTitle)
+  article.appendChild(date)
+  article.appendChild(topP)
+  article.appendChild(midP)
+  article.appendChild(bottomP)
+  article.appendChild(expandButton)
+
+  article.classList.add('article')
+  date.classList.add('date')
+  expandButton.classList.add('expandButton')
+
+  articleTitle.textContent = objData.title
+  date.textContent = objData.date
+  topP.textContent = objData.firstParagraph
+  midP.textContent = objData.secondParagraph
+  bottomP.textContent = objData.thirdParagraph
+  expandButton.textContent = '+'
+
+  expandButton.addEventListener('click', event => {
+    article.classList.toggle('article-open')
+  })
+
+
+  return article
+}
+
+const articleStructure = document.querySelector('.articles')
+
+data.push({title: 'The Freshest Article', date: 'August 5th, 2020',
+firstParagraph: 'Bro ipsum dolor sit amet corduroy face shots greasy rail. Single track free ride granny gear air skid ACL. Air smear snake bite steed sketching rock-ectomy. Smear carbon saddle afterbang, japan air noodle rail stunt heli bunny slope frontside dust on crust stoked sucker hole. Gondy chowder rigid laps huck. Rig ride bail sharkbite. Stunt ride around ripping laps wheels fully skid lid.', secondParagraph: 'Gorby big ring reverse camber, road rash back country gapers brain bucket schwag pow. Couloir bomb hole bail, switch hellflip berm park rat ripper fatty white room butter pillow popping. Greasy shreddin park moguls, heli 180 free ride backside. Saddle trucks rig Bike roadie. Euro scream caballerial, face plant huckfest core shot frozen chicken heads corn brain bucket steed betty. Punter dirt huck gaper wheels japan air snake bite road rash laps.', thirdParagraph: 'Frozen chicken heads frontside schwag gear jammer huck gaper scream bonk liftie heli. Sucker hole grip tape hardtail ACL crunchy pillow popping deck twister rock-ectomy gondy bunny slope. Wheelie crank sketching bomb ripper ollie, shreddin phat groomer. Skid gondy hardtail gaper, misty frozen chicken heads caballerial. Ride around afterbang roadie gnar sharkbite, noodle dope free ride laps groomer crunchy dust on crust.' })
+
+data.forEach(objData => {
+  articleStructure.appendChild(articleMaker(objData))
+})
